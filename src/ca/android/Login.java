@@ -3,27 +3,36 @@ package ca.android;
 import java.net.URI;
 import org.xmlrpc.android.XMLRPCClient;
 import org.xmlrpc.android.XMLRPCException;
+import ca.android.Dashboard;
+
+import android.os.Build;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+@SuppressLint("NewApi")
 public class Login extends Activity {
 
 	// Initialize Variables
-	EditText	inputUsername;
-	EditText	inputPassword;
-	String		username;
-	String		password;
-	String		result;
+	EditText inputUsername;
+	EditText inputPassword;
+	String username = "default";
+	String password = "default";
+	String result;
 	
+
 	// Client Declare
 	private XMLRPCClient client;
 	private URI myuri;
 	
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,37 +47,47 @@ public class Login extends Activity {
 		client = new XMLRPCClient(myuri);
 		
 		// Create Button to login
-		Button btnLogin = (Button) findViewById(R.id.btnLogin);
+		final Button btnLogin = (Button) findViewById(R.id.btnLogin);
 		
 		btnLogin.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
 			public void onClick(View btnLogin) {
 				// Create Intent to confirm screen
-				Intent Home = new Intent(getApplicationContext(), Dashboard.class);
-				Intent Login = new Intent(getApplicationContext(), Login.class);
-				// Send data to confirm screen
+				Intent next_Dashboard = new Intent(getApplicationContext(),
+						Dashboard.class);
+				//Intent next_Login = new Intent(getApplicationContext(), Login.class);
+
 				try {
 				  // Read TextEdit Values
 				  username = inputUsername.getText().toString();
 				  password = inputPassword.getText().toString();
 				  
 				  // Verify User name & Password, then return result
-				  result = (String) client.call("is_pass",username,password);
-				  Log.e("n",result.toString());
+				  //result = (String) client.call("is_pass",username,password);
+				  result = (String) client.call("hello_world");
+				  //Log.e("n",result.toString());
 				  
 				} catch (XMLRPCException ex) {
 				  // Exception Handling
-					startActivity(Home);
+				  //startActivity(next_Login);
 				}
 				
 				// Depending on result, go to Home Activity
-				if(result.equals("ok_damo")) { startActivity(Home); }
-				if(result.equals("no_damo")) { startActivity(Login); }
-				if(result.equals("who_damo")){ startActivity(Login); }
+				if(result.equals("ok_damo")) {
+					startActivity(next_Dashboard);
+				}
+				
+				
 			}
 		});
 		
 	} // EndOnCreate
 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.login, menu);
+        return true;
+    }
+	
 }

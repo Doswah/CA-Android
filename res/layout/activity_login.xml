@@ -8,8 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".Login" >
 
-        <ImageView android:id="@+id/Logo"
-           			 android:src="@drawable/logo"/>
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
     
     <EditText
         android:id="@+id/username"
