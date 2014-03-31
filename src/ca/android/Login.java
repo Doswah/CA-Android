@@ -22,8 +22,8 @@ public class Login extends Activity {
 	// Initialize Variables
 	EditText inputUsername;
 	EditText inputPassword;
-	String username = "default";
-	String password = "default";
+	String username = new String("init_username");
+	String password = new String("init_password");
 	String result;
 	
 
@@ -63,8 +63,7 @@ public class Login extends Activity {
 				  password = inputPassword.getText().toString();
 				  
 				  // Verify User name & Password, then return result
-				  //result = (String) client.call("is_pass",username,password);
-				  result = (String) client.call("hello_world");
+				  result = (String) client.call("is_pass",username,password);
 				  //Log.e("n",result.toString());
 				  
 				} catch (XMLRPCException ex) {
@@ -73,9 +72,9 @@ public class Login extends Activity {
 				}
 				
 				// Depending on result, go to Home Activity
-				if(result.equals("ok_damo")) {
+				//if(result.equals("ok_damo")) {
 					startActivity(next_Dashboard);
-				}
+				//}
 				
 				
 			}
