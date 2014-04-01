@@ -5,13 +5,14 @@ import org.xmlrpc.android.XMLRPCClient;
 import org.xmlrpc.android.XMLRPCException;
 import ca.android.Dashboard;
 
-import android.os.Build;
-import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,11 +23,11 @@ public class Login extends Activity {
 	// Initialize Variables
 	EditText inputUsername;
 	EditText inputPassword;
-	String username = new String("init_username");
-	String password = new String("init_password");
+	String username;
+	String password;
 	String result;
+	Object i;
 	
-
 	// Client Declare
 	private XMLRPCClient client;
 	private URI myuri;
@@ -37,6 +38,8 @@ public class Login extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		StrictMode.setThreadPolicy(policy);
 		
 		// Declare EditText with Variables
 		inputUsername = (EditText) findViewById(R.id.username);
@@ -59,34 +62,29 @@ public class Login extends Activity {
 
 				try {
 				  // Read TextEdit Values
+				  result = inputUsername.getText().toString();
 				  username = inputUsername.getText().toString();
 				  password = inputPassword.getText().toString();
 				  
 				  // Verify User name & Password, then return result
 				  result = (String) client.call("is_pass",username,password);
-				  //Log.e("n",result.toString());
+				  
 				  
 				} catch (XMLRPCException ex) {
-				  // Exception Handling
-				  //startActivity(next_Login);
+
 				}
+				
+				Log.e("n",result);
+				
 				
 				// Depending on result, go to Home Activity
 				//if(result.equals("ok_damo")) {
 					startActivity(next_Dashboard);
 				//}
-				
-				
+
 			}
 		});
 		
 	} // EndOnCreate
-
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.login, menu);
-        return true;
-    }
 	
 }
