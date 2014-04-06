@@ -5,7 +5,6 @@ import org.xmlrpc.android.XMLRPCClient;
 import org.xmlrpc.android.XMLRPCException;
 import ca.android.Dashboard;
 
-import android.app.AlertDialog;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -17,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class Login extends Activity {
@@ -58,9 +56,9 @@ public class Login extends Activity {
 			
 			public void onClick(View btnLogin) {
 				// Create Intent to confirm screen
-				Intent next_Dashboard = new Intent(getApplicationContext(),
-						Dashboard.class);
+				//Intent next_Dashboard = new Intent(getApplicationContext(), Dashboard.class);
 				Intent next_Login = new Intent(getApplicationContext(), Login.class);
+				Intent next_MainController = new Intent(getApplicationContext(), MainController.class);
 
 				try {
 				  // Read TextEdit Values
@@ -73,21 +71,21 @@ public class Login extends Activity {
 				  
 				  
 				} catch (XMLRPCException ex) {
-						startActivity(next_Login);
+						startActivity(next_MainController);
 				}
 				
 				Log.e("n",result);
 				
 				
 				// Depending on result, go to Home Activity
-				if(result.equals("ok_damo")) {
-					startActivity(next_Dashboard);
+				if(result.equals("who_damo")) {
+					startActivity(next_MainController);
 				}
-				if(result.equals("ok_damo")) {
+				if(result.equals("no_damo")) {
 						startActivity(next_Login);
 				}
 				if(result.equals("ok_damo")) {
-						startActivity(next_Login);
+						startActivity(next_MainController);
 				}
 
 			}
