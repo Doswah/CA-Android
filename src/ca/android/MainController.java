@@ -30,6 +30,8 @@ public class MainController extends TabActivity {
 	private TabHost tabHost;
 	Button oneButton;
 	Button twoButton;
+	Button threeButton;
+	// ADD BUTTON
 	Button exitButton;
 	private RelativeLayout header;
 	private RelativeLayout content;
@@ -53,6 +55,8 @@ public class MainController extends TabActivity {
 	private void addActivities() {
 		createActivity(OneActivity.class, getString(R.string.title_activity_one));
 		createActivity(TwoActivity.class, getString(R.string.title_activity_two));
+		createActivity(ThreeActivity.class, getString(R.string.title_activity_three));
+		// ADD ACTIVITY
 		tabHost.setCurrentTabByTag(OneActivity.class.toString());
 		headerTitle.setText(mapActivityTitles.get(OneActivity.class.toString()));
 	}
@@ -235,6 +239,8 @@ public class MainController extends TabActivity {
 	private void bindButtons() {
 		oneButton = (Button)findViewById(R.id.oneButton);
 		twoButton = (Button)findViewById(R.id.twoButton);
+		threeButton = (Button)findViewById(R.id.threeButton);
+		// ADD BUTTONS
 		exitButton = (Button)findViewById(R.id.logoutButton);
 		oneButton.setOnClickListener(new OnClickListener() {
 			@Override
@@ -246,6 +252,12 @@ public class MainController extends TabActivity {
 			@Override
 			public void onClick(View v) {
 				closeMenuAndStartIntent(TwoActivity.class.toString());
+			}
+		});
+		threeButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				closeMenuAndStartIntent(ThreeActivity.class.toString());
 			}
 		});
 		exitButton.setOnClickListener(new OnClickListener() {

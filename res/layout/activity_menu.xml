@@ -34,10 +34,19 @@
 		        android:layout_marginRight="5dp"
 		        android:text="@string/title_activity_two" />
 	        <Button
-	            android:id="@+id/logoutButton"
+	            android:id="@+id/threeButton"
 	            android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
 		        android:layout_below="@+id/twoButton"
+		        android:layout_alignParentLeft="true"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:text="@string/title_activity_three" />
+	        <Button
+	            android:id="@+id/logoutButton"
+	            android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/threeButton"
 		        android:layout_alignParentLeft="true"
 		        android:layout_marginLeft="5dp"
 		        android:layout_marginRight="5dp"

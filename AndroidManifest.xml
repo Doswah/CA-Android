@@ -17,18 +17,30 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Login"
+            android:name="ca.android.Login"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Dashboard" android:label="@string/title_activity_login" />
-        <activity android:name=".MainController" android:label="@string/app_name" />
-        <activity android:name=".OneActivity" android:label="@string/title_activity_one" />
-        <activity android:name=".TwoActivity" android:label="@string/title_activity_two" />
-
+        <activity
+            android:name="ca.android.Dashboard"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name="ca.android.MainController"
+            android:label="@string/app_name" />
+        <activity
+            android:name="ca.android.OneActivity"
+            android:label="@string/title_activity_one" />
+        <activity
+            android:name="ca.android.TwoActivity"
+            android:label="@string/title_activity_two" />
+        <activity
+            android:name="ca.android.ThreeActivity"
+            android:label="@string/title_activity_three" >
+        </activity>
     </application>
 
 </manifest>
