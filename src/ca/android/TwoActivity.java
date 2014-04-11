@@ -1,15 +1,8 @@
 package ca.android;
 
-import com.jjoe64.graphview.BarGraphView;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.LineGraphView;
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+
 
 public class TwoActivity extends Activity {
 	
@@ -19,11 +12,7 @@ public class TwoActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_two);
-	
-		
-		
 	}
-	
 	
 	
 	//TextView N1 = (TextView) findViewById(R.id.first_name);

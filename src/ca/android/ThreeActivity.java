@@ -8,7 +8,6 @@ import com.jjoe64.graphview.GraphView.GraphViewData;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.graphics.Color;
 import android.view.Menu;
 import android.widget.LinearLayout;
 
@@ -22,50 +21,59 @@ public class ThreeActivity extends Activity {
 		// first init data
 		// sin curve
 		int num = 150;
-		GraphViewData[] data = new GraphViewData[num];
+		GraphViewData[] average_data = new GraphViewData[num];
+		GraphViewData[] user_data = new GraphViewData[num];
 		double v=0;
- 
+		
 		// Average curve
-		data = new GraphViewData[num];
+		average_data = new GraphViewData[num];
 		v=0;
 		for (int i=0; i<num; i++) {
 		   v += 0.2;
-		   data[i] = new GraphViewData(i, Math.sin(Math.random()*v));
+		   average_data[i] = new GraphViewData(i, Math.sin(Math.random()*v));
 		}
 		// Color.rgb(90, 250, 00)
-		GraphViewSeries seriesAvg = new GraphViewSeries("Average", null, data);
+		GraphViewSeries seriesAvg = new GraphViewSeries("Average", null, average_data);
 		 
 		// User's curve
 		num = 1000;
-		data = new GraphViewData[num];
+		user_data = new GraphViewData[num];
 		v=0;
 		for (int i=0; i<num; i++) {
 		   v += 0.2;
-		   data[i] = new GraphViewData(i, Math.sin(Math.random()*v));
+		   user_data[i] = new GraphViewData(i, Math.sin(Math.random()*v));
 		}
-		GraphViewSeries seriesUsr = new GraphViewSeries("Me", null, data);
+		GraphViewSeries seriesUsr = new GraphViewSeries("Me", null, user_data);
 		 
 		/*
 		 * create graph
 		 */
 		GraphView graphView = new LineGraphView(
 		      this
-		      , "GraphViewDemo"
+		      , "Recent Activity"
 		);
-		// add data
+		
+		
+		// Add Data
 		graphView.addSeries(seriesAvg);
 		graphView.addSeries(seriesUsr);
-		// optional - set view port, start=2, size=10
+		
+		//--------------------------------------------
+		//	Graph Settings
+		//--------------------------------------------
+		// Set view port, start=0, size=10
 		graphView.setViewPort(0, 10);
 		graphView.setScrollable(true);
 		graphView.setScalable(true);
+		
 		// Legend Settings
 		graphView.setShowLegend(true);
 		graphView.setLegendAlign(LegendAlign.BOTTOM);
 		graphView.getGraphViewStyle().setLegendBorder(20);
 		graphView.getGraphViewStyle().setLegendSpacing(30);
 		graphView.getGraphViewStyle().setLegendWidth(300);
-		 
+		
+		// Add GraphView to LinearLayout "activity_CA"
 		LinearLayout layout = (LinearLayout) findViewById(R.id.activity_CA);
 		layout.addView(graphView);
 

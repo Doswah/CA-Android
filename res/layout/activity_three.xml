@@ -10,11 +10,23 @@
     tools:context=".ThreeActivity" 
      >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/caheaderactivity" />
+    
     <LinearLayout
-   android:orientation="vertical"
-   android:layout_width="fill_parent"
-   android:layout_height="350dip"
-   android:id="@+id/activity_CA" />
+        android:id="@+id/activity_CA"
+        android:layout_width="fill_parent"
+        android:layout_height="350dip"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:orientation="vertical" >
+    </LinearLayout>
+
     
 
 </RelativeLayout>
