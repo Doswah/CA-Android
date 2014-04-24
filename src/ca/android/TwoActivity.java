@@ -2,6 +2,9 @@ package ca.android;
 
 import android.app.Activity;
 import android.os.Bundle;
+import java.net.URI;
+import org.xmlrpc.android.XMLRPCClient;
+import org.xmlrpc.android.XMLRPCException;
 
 
 public class TwoActivity extends Activity {
@@ -13,15 +16,6 @@ public class TwoActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_two);
 	}
-	
-	
-	//TextView N1 = (TextView) findViewById(R.id.first_name);
-	//TextView N2 = (TextView) findViewById(R.id.second_name);
-	//TextView N3 = (TextView) findViewById(R.id.third_name);
-	//TextView NMe = (TextView) findViewById(R.id.my_name);
-		
-	
-	
 	
 	@Override
 	public void onBackPressed() {

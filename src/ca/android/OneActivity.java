@@ -7,7 +7,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 
@@ -44,7 +43,6 @@ public class OneActivity extends Activity {
 		Ex4.setText("   " + ExerciseList[3].getName() +  " - " + ExerciseList[3].getTime());
 		Ex5.setText("   " + ExerciseList[4].getName() +  " - " + ExerciseList[4].getTime());
 		
-		   	
 	}
 	
 	
